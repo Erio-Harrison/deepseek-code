@@ -1,0 +1,77 @@
+{
+  "name": "deepseek-code",
+  "displayName": "DeepSeek Code",
+  "description": "VSCode front end for deepseek-code, a personal coding agent experiment",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "deepseekCode",
+          "title": "DeepSeek Code",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "deepseekCode": [
+        {
+          "type": "webview",
+          "id": "deepseekCode.chat",
+          "name": "Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "deepseekCode.openChat",
+        "title": "DeepSeek Code: Open Chat"
+      },
+      {
+        "command": "deepseekCode.newSession",
+        "title": "DeepSeek Code: New Session"
+      },
+      {
+        "command": "deepseekCode.stop",
+        "title": "DeepSeek Code: Stop Current Session's Agent"
+      },
+      {
+        "command": "deepseekCode.setApiKey",
+        "title": "DeepSeek Code: Set API Key"
+      }
+    ],
+    "configuration": {
+      "title": "DeepSeek Code",
+      "properties": {
+        "deepseekCode.binaryPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the deepseek-code binary. Empty uses ../target/debug/deepseek-code (development layout)."
+        },
+        "deepseekCode.model": {
+          "type": "string",
+          "default": "",
+          "description": "DeepSeek model name passed as DEEPSEEK_MODEL. Empty uses the binary's default."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.0"
+  }
+}
